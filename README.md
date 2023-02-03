@@ -12,6 +12,7 @@ The provided dataset is the dogbreed classification dataset which can be found i
 The project is designed to be dataset independent so if there is a dataset that is more interesting or relevant to your work, you are welcome to use it to complete the project.
 Dataset link: https://www.kaggle.com/datasets/salader/dogs-vs-cats
 API dataset command: kaggle datasets download -d salader/dogs-vs-cats
+![Dogs_vs_cats_s3 data](https://user-images.githubusercontent.com/121497007/216591387-fefd1637-2014-44c1-86c4-9893cd5a5eee.jpg)
 
 ### Access
 Upload the data to an S3 bucket through the AWS Gateway so that SageMaker has access to the data.
@@ -55,17 +56,22 @@ Upload the data to an S3 bucket through the AWS Gateway so that SageMaker has ac
 
 ### HyperParameter Tuning job pic:
 
+
 ### Multiple training jobs triggered by the HyperParameter tuning job pic:
+![hyperparameter tuning jobs](https://user-images.githubusercontent.com/121497007/216591334-068571a5-8e2c-4972-baaa-6a40fdb4fd1a.jpg)
 
 ### Best Hyperparameter training job pic: 
+![best hyperparameter job](https://user-images.githubusercontent.com/121497007/216591372-77ad29ab-ac7d-4481-b203-87901e552271.jpg)
 
 ### Best hyperparameter Training job logs pic:
-
+![tuned job logs](https://user-images.githubusercontent.com/121497007/216591362-f265ed28-fc86-476c-93c8-2f8e873e38bf.jpg)
+![tuned job values](https://user-images.githubusercontent.com/121497007/216591366-c42ce8e2-6ba4-43af-9ee1-530cf1e61c3a.jpg)
 
 ## Debugging and Profiling
 We had set Debugger hook to record and keep track of the loss criterion metrics of the process in training and testing phases.
 
 The plot of the cross entropy loss is shown below:
+![cross entropy loss](https://user-images.githubusercontent.com/121497007/216591384-885a41f3-c1d0-4755-a8db-d11998a375d1.jpg)
 
 
 We can see in the graph that lines are smoothning beyond steps 50
@@ -75,10 +81,12 @@ We can see in the graph that lines are smoothning beyond steps 50
    
 ## Endpoint Metrics
 #### Pic
+![endpoint](https://user-images.githubusercontent.com/121497007/216591391-698e9596-c3fd-494c-8d06-4d695e594cc0.jpg)
 
 ### Results
 Results looks good, as we had utilized GPU while hyperparameter tuning and training of the fine-tuned ResNet50 Model.
 ml.g4dn.xlarge instance type for the runing the traiing purposes. However while deploying the model to an endpoint we used the "ml.t2.medium" instance type to save cost and resources.
+![Cloudwatch metrics of endpoint invocation](https://user-images.githubusercontent.com/121497007/216591376-56f534b9-288c-4213-84db-06258737e2dd.jpg)
 
 ## Model Deployment
 * Model was deployed to a "ml.t2.medium" instance type and we used the "endpoint_inference.py" script to setup and deploy our working endpoint.
@@ -89,5 +97,8 @@ ml.g4dn.xlarge instance type for the runing the traiing purposes. However while 
   * Secondly using the boto3 client
 
 ## Deployed active endpoint snapshot:
+![endpoints](https://user-images.githubusercontent.com/121497007/216591395-663f959a-5f5d-4b9d-98b3-849233f0c3e3.jpg)
 
 ## Sample output returned from endpoint
+![inference1](https://user-images.githubusercontent.com/121497007/216591346-66e25e89-b650-4b7a-a964-5234d2e05653.jpg)
+![Inference2](https://user-images.githubusercontent.com/121497007/216591351-ff6d48b0-edc4-4466-9f19-fa56237807d2.jpg)
